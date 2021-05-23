@@ -3,7 +3,6 @@ import DataTable from "react-data-table-component";
 import Card from "@material-ui/core/Card";
 import SortIcon from "@material-ui/icons/ArrowDownward";
 import axios from 'axios';
-import { useEffect, useState } from 'react';
 
 var ts:string = String(Math.round((new Date()).getTime() / 1000));
 
