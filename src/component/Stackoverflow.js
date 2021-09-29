@@ -1,40 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { makeStyles } from '@mui/styles';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Link from '@mui/material/Link';
 import axios from 'axios';
 import CustomPagination from './Pagination';
-
-const columns = [
-  {
-    field: 'author',
-    headerName: 'Author',
-    headerClassName: 'super-app-theme--header',
-    flex: 1,
-  },
-  {
-    field: 'title',
-    headerName: 'Title',
-    headerClassName: 'super-app-theme--header',
-    flex: 1,
-  },
-  {
-    field: 'question_link',
-    headerName: 'Question Link',
-    headerClassName: 'super-app-theme--header',
-    flex: 1,
-    renderCell: (params) => (
-      <Link href={params.value}>Link for the StackOverflow</Link>
-    ),
-  },
-  {
-    field: 'creation_date',
-    headerName: 'Creation date',
-    flex: 1,
-    headerClassName: 'super-app-theme--header',
-  },
-];
+import { columns } from './Columns';
 
 const useStyles = makeStyles({
   root: {
@@ -43,8 +12,6 @@ const useStyles = makeStyles({
     },
   },
 });
-
-let theme = createTheme({});
 
 const StackOverflow = () => {
   const classes = useStyles();
@@ -113,18 +80,16 @@ const StackOverflow = () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <div style={{ height: 700, width: '100%' }} className={classes.root}>
-        <DataGrid
-          rows={tableData}
-          columns={columns}
-          pageSize={12}
-          components={{
-            Pagination: CustomPagination,
-          }}
-        />
-      </div>
-    </ThemeProvider>
+    <div style={{ height: 700, width: '100%' }} className={classes.root}>
+      <DataGrid
+        rows={tableData}
+        columns={columns}
+        pageSize={12}
+        components={{
+          Pagination: CustomPagination,
+        }}
+      />
+    </div>
   );
 };
 

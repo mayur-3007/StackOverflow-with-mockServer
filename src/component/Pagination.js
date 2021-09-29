@@ -15,7 +15,7 @@ export default function CustomPagination() {
   return (
     <Pagination
       className={classes.root}
-      color='primary'
+      color='secondary'
       count={state.pagination.pageCount}
       page={state.pagination.page + 1}
       onChange={(event, value) => apiRef.current.setPage(value - 1)}
